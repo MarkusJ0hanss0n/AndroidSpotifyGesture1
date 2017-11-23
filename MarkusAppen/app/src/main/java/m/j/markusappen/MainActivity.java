@@ -1,7 +1,9 @@
 package m.j.markusappen;
 
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.graphics.Color;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -9,8 +11,11 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.test.suitebuilder.TestMethod;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -41,6 +46,8 @@ import java.net.URL;
 import java.util.Timer;
 import java.util.concurrent.ExecutionException;
 
+import m.j.markusappen.MyService.MyLocalBinder;
+
 public class MainActivity extends AppCompatActivity{
 
     private SensorManager mSensorManager;
@@ -52,10 +59,18 @@ public class MainActivity extends AppCompatActivity{
     private static String REQUEST_CODE;
     private String AccessToken;
 
+    MyService TheService;
+    boolean isBound = false;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent i = new Intent(this, MyService.class);
+        bindService(i, MyConnetion, BIND_AUTO_CREATE);
+
         CLIENT_ID = getString(R.string.CLIENT_ID);
         REDIRECT_URI = getString(R.string.REDIRECT_URI);
         REQUEST_CODE = getString(R.string.REQUEST_CODE);
@@ -103,7 +118,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onPause() {
         super.onPause();
-        mSensorManager.unregisterListener(SEL);
+        //mSensorManager.unregisterListener(SEL);
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
@@ -155,4 +170,20 @@ public class MainActivity extends AppCompatActivity{
         URL url = new URL(sURL);
         new HttpPostRequest(this).execute(url);
     }
+
+    private ServiceConnection MyConnetion = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName componentName, IBinder iBinder) {
+            MyLocalBinder binder = (MyLocalBinder) iBinder;
+            TheService = binder.getService();
+            isBound = true;
+            Toast.makeText(MainActivity.this, "Bound to service: True", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName componentName) {
+            isBound = false;
+            Toast.makeText(MainActivity.this, "Bound to service: False", Toast.LENGTH_LONG).show();
+        }
+    };
 }
