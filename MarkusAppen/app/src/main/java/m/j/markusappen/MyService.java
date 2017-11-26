@@ -12,6 +12,7 @@ public class MyService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+
         return MyBinder;
     }
 
