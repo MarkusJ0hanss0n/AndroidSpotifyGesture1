@@ -30,28 +30,8 @@ public class HttpPostRequest extends AsyncTask<URL, Integer, Long> {
         this.myContext = context;
     }
 
-//    private String getPostDataString(HashMap<String, String> params) throws UnsupportedEncodingException {
-//        StringBuilder feedback = new StringBuilder();
-//        boolean first = true;
-//        for(Map.Entry<String, String> entry : params.entrySet()){
-//            if (first)
-//                first = false;
-//            else
-//                feedback.append("&");
-//
-//            feedback.append(URLEncoder.encode(entry.getKey(), "UTF-8"));
-//            feedback.append("=");
-//            feedback.append(URLEncoder.encode(entry.getValue(), "UTF-8"));
-//        }
-//
-//        return feedback.toString();
-//    }
 
     public void getData(URL myUrl) throws IOException {
-
-        //HashMap<String, String> params = new HashMap<>();
-        //params.put("address", "Oxford%20University,%20uk");
-        //params.put("sensor", "false");
 
         HttpURLConnection client = null;
         try {
@@ -59,24 +39,17 @@ public class HttpPostRequest extends AsyncTask<URL, Integer, Long> {
             client.setReadTimeout(15000);
             client.setConnectTimeout(15000);
             client.setRequestMethod("POST");
-            //client.setRequestMethod("PUT");
-
-            // You need to specify the context-type.  In this case it is a
-            // form submission, so use "multipart/form-data"
-            //client.setRequestProperty("multipart/form-data", "https://eddn.usgs.gov/fieldtest.html;charset=UTF-8");
             client.setDoInput(true);
             client.setDoOutput(true);
 
             OutputStream os = client.getOutputStream();
             BufferedWriter writer = new BufferedWriter(
                     new OutputStreamWriter(os, "UTF-8"));
-            //writer.write(getPostDataString(params));
 
             writer.flush();
             writer.close();
             os.close();
 
-            //client.connect();
             int responseCode = client.getResponseCode();
 
             if (responseCode == HttpsURLConnection.HTTP_OK) {
@@ -114,12 +87,6 @@ public class HttpPostRequest extends AsyncTask<URL, Integer, Long> {
     }
 
     protected void onPostExecute(Long result) {
-        //System.out.println("Downloaded " + result + " bytes");
-        // This is just printing it to the console for now.
-        //System.out.println(response);
-        // In the following two line I pass the string elsewhere and decode it.
-        //InputCode input = new InputCode();
-        //input.passToDisplay(myContext, response);
-        //Toast.makeText(myContext, response, Toast.LENGTH_LONG).show();
+
     }
 }

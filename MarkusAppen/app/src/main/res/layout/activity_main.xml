@@ -1,9 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="m.j.markusappen.MainActivity">
+    <SeekBar
+        android:id="@+id/seekBarHoldTime"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="26dp"
+        android:max="5000"
+        android:progress="2000"/>
+    <TextView
+        android:id="@+id/textViewHoldTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seekBarHoldTime"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="14dp" />
+    <SeekBar
+        android:id="@+id/seekBarUnregTime"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="126dp"
+        android:max="2000"
+        android:progress="400"/>
+    <TextView
+        android:id="@+id/textViewUnregTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seekBarUnregTime"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="14dp" />
+    <SeekBar
+        android:id="@+id/seekBarGestureTime"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="226dp"
+        android:max="3000"
+        android:progress="1200"/>
+    <TextView
+        android:id="@+id/textViewGestureTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/seekBarGestureTime"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="14dp" />
+    <Button
+        android:id="@+id/buttonSetDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Set Default"
+        android:layout_marginTop="326dp"/>
 
-</LinearLayout>
+
+
+</RelativeLayout>
