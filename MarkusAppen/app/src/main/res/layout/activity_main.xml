@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="m.j.markusappen.MainActivity">
+
     <SeekBar
         android:id="@+id/seekBarHoldTime"
         android:layout_width="300dp"
@@ -13,7 +14,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="26dp"
         android:max="5000"
-        android:progress="2000"/>
+        android:progress="2000" />
+
     <TextView
         android:id="@+id/textViewHoldTime"
         android:layout_width="wrap_content"
@@ -21,16 +23,20 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/seekBarHoldTime"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="14dp"
+        android:textColor="@color/textViewColor"/>
+
     <SeekBar
         android:id="@+id/seekBarUnregTime"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="126dp"
         android:max="2000"
-        android:progress="400"/>
+        android:progress="400" />
+
     <TextView
         android:id="@+id/textViewUnregTime"
         android:layout_width="wrap_content"
@@ -38,16 +44,20 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/seekBarUnregTime"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="14dp"
+        android:textColor="@color/textViewColor"/>
+
     <SeekBar
         android:id="@+id/seekBarGestureTime"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="false"
         android:layout_marginTop="226dp"
         android:max="3000"
-        android:progress="1200"/>
+        android:progress="1200" />
+
     <TextView
         android:id="@+id/textViewGestureTime"
         android:layout_width="wrap_content"
@@ -55,14 +65,24 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/seekBarGestureTime"
         android:layout_marginLeft="18dp"
-        android:layout_marginTop="14dp" />
+        android:layout_marginTop="14dp"
+        android:textColor="@color/textViewColor"/>
+
     <Button
         android:id="@+id/buttonSetDefault"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="326dp"
+        android:allowUndo="false"
+        android:background="@drawable/button_rounded"
+        android:filterTouchesWhenObscured="false"
+        android:hapticFeedbackEnabled="false"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
         android:text="Set Default"
-        android:layout_marginTop="326dp"/>
-
+        android:textColorLink="@color/colorAccent"
+        android:textStyle="bold"/>
 
 
 </RelativeLayout>

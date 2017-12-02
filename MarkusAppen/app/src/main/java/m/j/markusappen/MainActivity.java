@@ -104,14 +104,14 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onSensorChanged(SensorEvent sensorEvent) {
                 if(sensorEvent.values[0] < proxSensor.getMaximumRange()){
-                    getWindow().getDecorView().setBackgroundColor(Color.RED);
+                    getWindow().getDecorView().setBackgroundColor(Color.rgb(34,35,38));
                     newCloseInput = true;
                     if(newFarInput == true) {
                         newFarInput = false;
                         HandleHold();
                     }
                 }else{
-                    getWindow().getDecorView().setBackgroundColor(Color.GREEN);
+                    getWindow().getDecorView().setBackgroundColor(Color.rgb(18,18,18));
                     newFarInput = true;
                     if(newCloseInput) {
                         newCloseInput = false;
@@ -161,7 +161,6 @@ public class MainActivity extends AppCompatActivity{
             AuthenticationResponse response = AuthenticationClient.getResponse(resultCode, intent);
             if (response.getType() == AuthenticationResponse.Type.TOKEN) {
                 AccessToken = response.getAccessToken();
-
             }
         }
     }
@@ -227,12 +226,19 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 SetTimerGesture();
+
             }
         });
         btnSetDefault.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "Not yet implemented..", Toast.LENGTH_SHORT ).show();
+                sbHoldTime.setProgress(2000);
+                sbUnregTime.setProgress(400);
+                sbGestureTime.setProgress(1200);
+                SetTimerHold();
+                SetTimerUnregister();
+                SetTimerGesture();
+
             }
         });
     }
